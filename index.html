@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Noa ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a0b2e, #0c1d34);
+            font-family: 'Georgia', serif;
+            color: #fff;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        /* Contenedor principal con 3 columnas */
+        .main-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1400px;
+            width: 100%;
+            position: relative;
+        }
+        
+        /* Columnas laterales con corazón + símbolo */
+        .side-column {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 180px;
+            position: sticky;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 100vh;
+            gap: 40px;
+        }
+        
+        /* Corazón */
+        .heart {
+            width: 150px;
+            height: 135px;
+            position: relative;
+            animation: heartbeat 1.4s ease-in-out infinite;
+        }
+        
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 75px;
+            height: 120px;
+            background: radial-gradient(circle at 30px 50px, #FF8C00, #FF5722);
+            border-radius: 75px 75px 0 0;
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.6);
+        }
+        
+        .heart:before {
+            left: 75px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        
+        .heart:after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+        
+        @keyframes heartbeat {
+            0%, 50%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.08); }
+            20%, 40% { transform: scale(0.95); }
+        }
+        
+        /* Luna */
+        .moon {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30px 30px, #f5f5dc, #f0e68c);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 40px rgba(245, 245, 220, 0.8),
+                inset 15px -10px 0 rgba(0, 0, 0, 0.1);
+            position: relative;
+            animation: moonGlow 4s ease-in-out infinite alternate;
+        }
+        
+        .moon::before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            top: 20px;
+            left: 50px;
+        }
+        
+        .moon::after {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: rgba(0, 0, 0, 0.08);
+            border-radius: 50%;
+            top: 45px;
+            left: 30px;
+        }
+        
+        @keyframes moonGlow {
+            0% { box-shadow: 0 0 30px rgba(245, 245, 220, 0.7); }
+            100% { box-shadow: 0 0 50px rgba(245, 245, 220, 0.9); }
+        }
+        
+        /* Estrella */
+        .star {
+            width: 0;
+            height: 0;
+            border-right: 50px solid transparent;
+            border-bottom: 35px solid #FFD700;
+            border-left: 50px solid transparent;
+            position: relative;
+            animation: starTwinkle 2s ease-in-out infinite;
+            transform: rotate(35deg);
+        }
+        
+        .star:before {
+            content: "";
+            width: 0;
+            height: 0;
+            border-right: 50px solid transparent;
+            border-bottom: 35px solid #FFD700;
+            border-left: 50px solid transparent;
+            position: absolute;
+            top: -22px;
+            left: -50px;
+            transform: rotate(-70deg);
+        }
+        
+        .star:after {
+            content: "";
+            width: 0;
+            height: 0;
+            border-right: 50px solid transparent;
+            border-bottom: 35px solid #FFD700;
+            border-left: 50px solid transparent;
+            position: absolute;
+            top: 1px;
+            left: -50px;
+            transform: rotate(-35deg);
+        }
+        
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.8; transform: rotate(35deg) scale(1); }
+            50% { opacity: 1; transform: rotate(35deg) scale(1.1); }
+        }
+        
+        /* Contenedor central para el texto */
+        .center-column {
+            flex: 1;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        /* Título principal */
+        .main-title {
+            color: #FFD700;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            font-family: 'Georgia', serif;
+        }
+        
+        /* Cajas de texto para físico y personalidad */
+        .text-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 35px 40px;
+            border: 1px solid rgba(255, 140, 0, 0.25);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .physical-box {
+            border-left: 5px solid #FF8C00;
+        }
+        
+        .personality-box {
+            border-left: 5px solid #32CD32;
+        }
+        
+        /* Subtítulos de sección */
+        .section-title {
+            color: #FFD700;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            text-align: center;
+            font-family: 'Georgia', serif;
+        }
+        
+        .physical-title {
+            color: #FF8C00;
+        }
+        
+        .personality-title {
+            color: #32CD32;
+        }
+        
+        /* Texto principal (tu mensaje) */
+        .message-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #f0f0f0;
+            text-align: justify;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif;
+        }
+        
+        /* Caja del poema y firma */
+        .poem-box {
+            background: rgba(255, 140, 0, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px dashed rgba(255, 215, 0, 0.4);
+        }
+        
+        .poem {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: #FFA07A;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif;
+            white-space: pre-line;
+            margin-bottom: 20px;
+        }
+        
+        .signature {
+            font-size: 1.4em;
+            color: #FF8C00;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-family: 'Georgia', serif;
+        }
+        
+        /* Estrellas de fondo */
+        .stars-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .star-bg {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Responsive para tablets y móviles */
+        @media (max-width: 1100px) {
+            .main-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .side-column {
+                position: static;
+                transform: none;
+                height: auto;
+                min-width: auto;
+                margin: 15px 0;
+                order: -1;
+                flex-direction: row;
+                gap: 60px;
+                height: auto;
+            }
+            
+            .heart {
+                width: 120px;
+                height: 108px;
+            }
+            
+            .heart:before,
+            .heart:after {
+                width: 60px;
+                height: 96px;
+            }
+            
+            .heart:before {
+                left: 60px;
+            }
+            
+            .moon, .star {
+                transform: scale(0.8);
+            }
+            
+            .center-column {
+                width: 100%;
+            }
+            
+            .main-title {
+                font-size: 2em;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .text-box {
+                padding: 25px 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5em;
+            }
+            
+            .message-text {
+                font-size: 1em;
+            }
+            
+            .poem-box {
+                padding: 20px 15px;
+            }
+            
+            .poem {
+                font-size: 1.1em;
+            }
+            
+            .side-column {
+                gap: 40px;
+            }
+            
+            .heart {
+                width: 100px;
+                height: 90px;
+            }
+            
+            .heart:before,
+            .heart:after {
+                width: 50px;
+                height: 80px;
+            }
+            
+            .heart:before {
+                left: 50px;
+            }
+            
+            .moon, .star {
+                transform: scale(0.7);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.7em;
+            }
+            
+            .section-title {
+                font-size: 1.3em;
+            }
+            
+            .message-text {
+                font-size: 0.95em;
+                text-align: left;
+            }
+            
+            .poem {
+                font-size: 1em;
+            }
+            
+            .signature {
+                font-size: 1.2em;
+            }
+            
+            .side-column {
+                gap: 30px;
+            }
+            
+            .heart {
+                width: 80px;
+                height: 72px;
+            }
+            
+            .heart:before,
+            .heart:after {
+                width: 40px;
+                height: 64px;
+            }
+            
+            .heart:before {
+                left: 40px;
+            }
+            
+            .moon, .star {
+                transform: scale(0.6);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo estrellado -->
+    <div class="stars-bg" id="starsBg"></div>
+    
+    <div class="main-container">
+        <!-- Columna izquierda con corazón y luna -->
+        <div class="side-column">
+            <div class="heart"></div>
+            <div class="moon"></div>
+        </div>
+        
+        <!-- Columna central con todo el contenido -->
+        <div class="center-column">
+            <h1 class="main-title">Para Mi Noa ❤️ Feliz Navidad</h1>
+            
+            <!-- Sección FÍSICO -->
+            <div class="text-box physical-box">
+                <h2 class="section-title physical-title">Tu Físico</h2>
+                <div class="message-text">
+                    Noa, te amo muchísimo, así que he hecho una lista de algunas cosas por las que te amo, si empezamos por el físico me gustan tus ojos de un color marrón como el café que me enamoran, tu sonrisa que aunque en pocas fotos veo cuando la tengo delante me alegra y me hace más feliz la vida, tus manos, unas manos delicadas que ojalá me toquen el pelo cuando nos veamos, tu precioso, preciosísimo negro que querría peinar, hacer coletas trenzas y tocar todo el rato, me encanta aunque no lo creas tu altura, porque aunque parezca poco 1,50 es perfecto para que cuando estemos juntos te tumbes sobre mi pecho al ver una peli o estar sentados en un sofá, me encanta tu estilo o más bien la mezcla de estilos que tienes pasando de vestir de ropa clara a oscura como si nada, de verdad amo que no tengas un solo estilo sino que seas la combinación de varios, tus brazos y piernas que sin duda tocaría o agarraría, la cintura de reina que tienes y tus tetas, un torso que amo y me encanta y todos los pequeños detalles que te hacen ser tú también me encantan, por ejemplo tus labios, unos labios que no puedo aguantarme las ganas de besar.
+                </div>
+            </div>
+            
+            <!-- Sección PERSONALIDAD -->
+            <div class="text-box personality-box">
+                <h2 class="section-title personality-title">Tu Personalidad</h2>
+                <div class="message-text">
+                    Pasando a tu personalidad me gusta que seas honesta conmigo y me digas que te ocurre casi siempre y aunque creo que te pasan más cosas de las que me dices pero no me las cuentas para no agobiarme o porque te incomodan ya lo arreglaremos y amo que tengas confianza en mi, amo que me escuches y te sientas cómoda conmigo pidiéndome que te cuente cosas y hablando contigo, amo la fuerza que tienes porque has vivido demasiado malo pero aun así no te rindes y decides salir adelante, que seas detallista que aunque no me has dado nada espero que me regales en algún momento ya sea cuando nos veamos o cuando quieras un dibujo o una carta, tu humor es buenísimo aunque digas que los chistes que dices son malos siempre me río, me encanta que seas maja con la gente y que no seas una mala persona sino que intentas confiar en los demás, tu dedicación y el tiempo que estás junto a mi que aunque odio cuando te vas y lo suelo pasar mal y sobrepensar no suele pasar, me encanta como te expresas, te considero una chica muy inteligente y aunque suelo hablar yo más que tú me encanta cuando hablas de cualquier cosa, me encanta lo que dices y como lo dices.
+                </div>
+            </div>
+            
+            <!-- Poema y firma -->
+            <div class="poem-box">
+                <div id="poemText" class="poem"></div>
+                <div class="signature">En resumen me encanta tu físico y tu personalidad y te deseo que tengas una feliz navidad, un besazo reina de mi parte.<br><br>Con todo mi amor, Óscar</div>
+            </div>
+        </div>
+        
+        <!-- Columna derecha con corazón y estrella -->
+        <div class="side-column">
+            <div class="heart"></div>
+            <div class="moon"></div>
+        </div>
+    </div>
+
+    <script>
+        // Crear estrellas de fondo
+        const starsContainer = document.getElementById('starsBg');
+        for (let i = 0; i < 120; i++) {
+            const star = document.createElement('div');
+            star.className = 'star-bg';
+            star.style.width = Math.random() * 3 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.opacity = Math.random() * 0.5 + 0.2;
+            starsContainer.appendChild(star);
+        }
+        
+        // Texto del poema
+        const poemLines = [
+            "Si amarte fuera delito,",
+            "si por ello la vida perdiese,",
+            "yo me arriesgaría siempre",
+            "para que aún en la muerte",
+            "mejor tu vida fuese."
+        ];
+        
+        const poemElement = document.getElementById('poemText');
+        let lineIndex = 0;
+        let charIndex = 0;
+        let currentLine = '';
+        
+        function typePoem() {
+            if (lineIndex < poemLines.length) {
+                if (charIndex < poemLines[lineIndex].length) {
+                    currentLine += poemLines[lineIndex].charAt(charIndex);
+                    poemElement.innerHTML = currentLine;
+                    charIndex++;
+                    
+                    const speed = Math.random() * 60 + 50;
+                    setTimeout(typePoem, speed);
+                } else {
+                    currentLine += '<br>';
+                    poemElement.innerHTML = currentLine;
+                    lineIndex++;
+                    charIndex = 0;
+                    setTimeout(typePoem, 400);
+                }
+            }
+        }
+        
+        // Iniciar la escritura del poema después de 1.5 segundos
+        setTimeout(typePoem, 1500);
+        
+        // Efecto sutil de brillo en corazones
+        const hearts = document.querySelectorAll('.heart');
+        setInterval(() => {
+            hearts.forEach(heart => {
+                heart.style.filter = `brightness(${1 + Math.random() * 0.3})`;
+            });
+        }, 2000);
+    </script>
+</body>
+</html>
